@@ -13,14 +13,13 @@ const TopNav = () => {
     setsearches(res.data);
   }
 
-  console.log(searches)
 
   useEffect(()=>{
     getSearch();
   },[query])
 
   return (
-    <div className="relative p-1 mx-auto flex items-center w-1/2 ">
+    <div className="relative p-1 mx-auto flex px-8 items-center w-1/2 ">
       <i className="ri-search-line text-xl"></i>
       <input
         onChange={(e) => setquery(e.target.value)}
@@ -37,7 +36,6 @@ const TopNav = () => {
               <img
                 className="h-10 w-10 object-cover rounded"
                 src={ s.profile_path || s.backdrop_path ? `https://image.tmdb.org/t/p/original/${s.profile_path || s.backdrop_path}` : 'https://icon-library.com/images/no-icon-png/no-icon-png-6.jpg '}
-                // src="https://icon-library.com/images/no-icon-png/no-icon-png-6.jpg"
                 alt=""
               />
               <h1 className="text-2xl capitalize">{s.original_name || s.name || s.original_title || s.title }</h1>
