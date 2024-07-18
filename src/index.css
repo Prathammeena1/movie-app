@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Scrollbar styling for Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    display: none;
+}
