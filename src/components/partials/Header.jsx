@@ -15,7 +15,7 @@ const Header = ({data}) => {
           backgroundPosition: "top",
           backgroundSize: "cover",
         }}
-        className="h-[50vh] w-full backdrop-blur-lg"
+        className="h-[70vh] w-full backdrop-blur-lg"
       >
         <div className="h-full w-[70%] bg-gradient-to-r from-black/[.5] to-transparent flex flex-col justify-end px-[5%] py-[3%]  ">
           <h1 className="text-4xl text-white font-bold uppercase tracking-widest w-[80%]">

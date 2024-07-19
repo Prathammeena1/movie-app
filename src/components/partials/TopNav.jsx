@@ -19,7 +19,7 @@ const TopNav = () => {
   },[query])
 
   return (
-    <div className="sticky top-0 z-[99] bg-zinc-950/[.6] backdrop-blur-lg py-5 mx-auto flex px-8 items-center w-full justify-center">
+    <div className="sticky top-0 z-[99] bg-zinc-950/[.6] backdrop-blur py-5 mx-auto flex px-8 items-center w-full justify-center">
       <i className="ri-search-line text-xl"></i>
       <input
         onChange={(e) => setquery(e.target.value)}
