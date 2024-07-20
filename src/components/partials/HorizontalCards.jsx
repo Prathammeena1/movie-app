@@ -11,7 +11,7 @@ const HorizontalCards = ({ data,func }) => {
         {data.map((d, i) => (
           <Link
             key={i}
-            to={`/details/${d.id}`} // Assuming you have a route for details page
+            // to={`/details/${d.id}`} // Assuming you have a route for details page
             className="w-[16%] h-[37vh] overflow-hidden bg-zinc-800/[.3] hover:bg-zinc-600/[.3] transition-all duration-[.3s] flex-shrink-0 rounded p-4"
           >
             <div className="w-[100%] aspect-square overflow-hidden rounded">

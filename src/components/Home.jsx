@@ -5,6 +5,7 @@ import axios from "./utils/axios";
 import Header from "./partials/Header";
 import HorizontalCards from "./partials/HorizontalCards";
 import DropDown from "./partials/DropDown";
+import Loading from "./partials/Loading";
 
 const Home = () => {
   document.title = "Movie App | Home ";
@@ -29,7 +30,6 @@ const Home = () => {
     !data && getHeaderdata();
   }, [category]);
 
-  console.log(category)
 
   return data && trending ? (
     <div
@@ -60,7 +60,7 @@ const Home = () => {
       </div>
     </div>
   ) : (
-    ""
+    <Loading/>
   );
 };
 

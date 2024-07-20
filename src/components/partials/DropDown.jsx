@@ -1,7 +1,6 @@
 import React from "react";
 
 const DropDown = ({ title, options, func }) => {
-    console.log(options)
   return (
     <div>
       <select onChange={func}
