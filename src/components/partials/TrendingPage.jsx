@@ -19,6 +19,7 @@ const TrendingPage = () => {
   const [category, setCategory] = useState("all");
   const [duration, setDuration] = useState("day");
   const [page, setpage] = useState(1);
+  const [hasMore, sethasMore] = useState(true);
 
   const getHeaderData = async () => {
     try {
@@ -33,16 +34,30 @@ const TrendingPage = () => {
 
   const getTrendingData = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/${duration}`);
-      setTrending((prevState) => [...prevState, ...data.results]);
-      setpage(page+1)
+      const { data } = await axios.get(`/trending/${category}/${duration}?page=${page}`);
+      if (data.results.length > 0) {
+        setTrending((prevState) => [...prevState, ...data.results]);
+        setpage(page + 1);
+      } else {
+        sethasMore(false);
+      }
     } catch (error) {
       console.error("Error fetching trending data", error);
     }
   };
 
+  const refreshHandler = () => {
+    if (trending.length === 0) {
+      getTrendingData();
+    } else {
+      setpage(1);
+      setTrending([]);
+      getTrendingData();
+    }
+  };
+
   useEffect(() => {
-    getTrendingData();
+    refreshHandler();
     getHeaderData();
   }, [category, duration]);
 
@@ -62,7 +77,8 @@ const TrendingPage = () => {
           <div onClick={() => navigate(-1)}>
             <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
           </div>
-          <h1 className="text-2xl font-semibold">Trending</h1>
+          <h1 className="text-2xl font-semibold capitalize">Trending</h1>
+          <h1 className="text-2xl font-semibold capitalize">{category}</h1>
           <TopNav />
           <DropDown
             title="Filter"
@@ -81,10 +97,10 @@ const TrendingPage = () => {
           <InfiniteScroll
             dataLength={trending.length}
             next={getTrendingData}
-            hasMore={true}
+            hasMore={hasMore}
             loader={<h4>Loading...</h4>}
           >
-            <Cards data={trending} title={category} />
+            <Cards data={trending} />
           </InfiniteScroll>
         </div>
       </div>
