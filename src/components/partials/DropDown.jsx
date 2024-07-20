@@ -11,7 +11,7 @@ const DropDown = ({ title, options, func }) => {
           {title}
         </option>
         {options.map((o, i) => (
-          <option key={i} value={o}>{o.toUpperCase()}</option>
+          <option className="capitalize" key={i} value={o}>{o}</option>
         ))}
       </select>
     </div>
