@@ -9,7 +9,7 @@ const Cards = ({data,title}) => {
             // to={`/details/${d.id}`} // Assuming you have a route for details page
             className="w-[16%] h-[45vh] overflow-hidden bg-zinc-800/[.5] hover:bg-zinc-600/[.7] transition-all duration-[.3s] flex-shrink-0 rounded p-4"
           >
-            <div className="w-[100%] aspect-square overflow-hidden rounded">
+            <div className="w-[100%] shadow-lg aspect-square overflow-hidden rounded">
               <img
                 className="h-full w-full object-cover"
                 src={`https://image.tmdb.org/t/p/original/${

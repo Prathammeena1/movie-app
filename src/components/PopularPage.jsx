@@ -10,15 +10,15 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const PopularPage = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    document.title = "Movie App | Home";
-  }, []);
 
-  const [data, setData] = useState(null);
-  const [popular, setpopular] = useState([]);
-  const [category, setCategory] = useState("movie");
-  const [page, setpage] = useState(1);
-  const [hasMore, sethasMore] = useState(true);
+const [data, setData] = useState(null);
+const [popular, setpopular] = useState([]);
+const [category, setCategory] = useState("movie");
+const [page, setpage] = useState(1);
+const [hasMore, sethasMore] = useState(true);
+useEffect(() => {
+    document.title = "Movie App | Popular " + category.toUpperCase();
+  }, [category]);
 
   const getHeaderData = async () => {
     try {

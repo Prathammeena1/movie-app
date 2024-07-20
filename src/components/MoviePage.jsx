@@ -7,23 +7,22 @@ import axios from "./utils/axios";
 import Cards from "./partials/Cards";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const TrendingPage = () => {
+const MoviePage = () => {
   const navigate = useNavigate();
 
-  
-  const [data, setData] = useState(null);
-  const [trending, setTrending] = useState([]);
-  const [category, setCategory] = useState("all");
-  const [duration, setDuration] = useState("day");
-  const [page, setpage] = useState(1);
-  const [hasMore, sethasMore] = useState(true);
-  useEffect(() => {
-    document.title = "Movie App | Trending " + category.toUpperCase();
+
+const [data, setData] = useState(null);
+const [movie, setmovie] = useState([]);
+const [category, setCategory] = useState("now_playing");
+const [page, setpage] = useState(1);
+const [hasMore, sethasMore] = useState(true);
+useEffect(() => {
+    document.title = "Movie App | Movie " + category.toUpperCase().split('_').join(" ");
   }, [category]);
 
   const getHeaderData = async () => {
     try {
-      const res = await axios.get(`/trending/${category}/${duration}`);
+      const res = await axios.get(`/movie/${category}?page=1`);
       const randomIndex = Math.floor(Math.random() * res.data.results.length);
       const randomData = res.data.results[randomIndex];
       setData(randomData);
@@ -32,36 +31,36 @@ const TrendingPage = () => {
     }
   };
 
-  const getTrendingData = async () => {
+  const getMovieData = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/${duration}?page=${page}`);
+      const { data } = await axios.get(`/movie/${category}?page=${page}`);
       if (data.results.length > 0) {
-        setTrending((prevState) => [...prevState, ...data.results]);
+        setmovie((prevState) => [...prevState, ...data.results]);
         setpage(page + 1);
       } else {
         sethasMore(false);
       }
     } catch (error) {
-      console.error("Error fetching trending data", error);
+      console.error("Error fetching movie data", error);
     }
   };
 
   const refreshHandler = () => {
-    if (trending.length === 0) {
-      getTrendingData();
+    if (movie.length === 0) {
+      getMovieData();
     } else {
       setpage(1);
-      setTrending([]);
-      getTrendingData();
+      setmovie([]);
+      getMovieData();
     }
   };
 
   useEffect(() => {
     refreshHandler();
     getHeaderData();
-  }, [category, duration]);
+  }, [category]);
 
-  return data && trending.length > 0 ? (
+  return data && movie.length > 0 ? (
     <div
       style={{
         background: `linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.5), rgba(0,0,0,.7)), url(https://image.tmdb.org/t/p/original/${
@@ -77,30 +76,24 @@ const TrendingPage = () => {
           <div onClick={() => navigate(-1)}>
             <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
           </div>
-          <h1 className="text-2xl font-semibold capitalize">Trending</h1>
-          <h1 className="text-2xl font-semibold capitalize">{category}</h1>
+          <h1 className="text-2xl font-semibold capitalize">movie</h1>
+          <h1 className="text-2xl font-semibold capitalize h-fit w-[14vw]">{category.split('_').join(" ")}</h1>
           <TopNav />
           <DropDown
             title="Filter"
-            options={["tv", "movie", "all"]}
+            options={['now_playing','popular','top_rated','upcoming']}
             func={(e) => setCategory(e.target.value.toLowerCase())}
-          />
-          <div className="w-[.5%]"></div>
-          <DropDown
-            title="Duration"
-            options={["week", "day"]}
-            func={(e) => setDuration(e.target.value.toLowerCase())}
           />
         </div>
 
         <div className="h-full w-full p-2 overflow-hidden">
           <InfiniteScroll
-            dataLength={trending.length}
-            next={getTrendingData}
+            dataLength={movie.length}
+            next={getMovieData}
             hasMore={hasMore}
             loader={<h4>Loading...</h4>}
           >
-            <Cards data={trending} />
+            <Cards data={movie} />
           </InfiniteScroll>
         </div>
       </div>
@@ -110,4 +103,4 @@ const TrendingPage = () => {
   );
 };
 
-export default TrendingPage;
+export default MoviePage;

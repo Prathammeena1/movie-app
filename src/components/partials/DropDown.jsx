@@ -11,7 +11,7 @@ const DropDown = ({ title, options, func }) => {
           {title}
         </option>
         {options.map((o, i) => (
-          <option className="capitalize" key={i} value={o}>{o}</option>
+          <option className="capitalize" key={i} value={o}>{o.split('_').join(" ")}</option>
         ))}
       </select>
     </div>
