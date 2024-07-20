@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Cards = ({data,title}) => {
   return (
-    <div className='flex flex-wrap w-full gap-2'>
+    <div className='flex flex-wrap w-full h-full gap-2 overflow-hidden'>
         {data.map((d,i)=> <Link
             key={i}
             // to={`/details/${d.id}`} // Assuming you have a route for details page
