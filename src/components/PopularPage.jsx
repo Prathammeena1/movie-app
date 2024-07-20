@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TopNav from "./TopNav";
-import DropDown from "./DropDown";
-import Loading from "./Loading";
-import axios from "../utils/axios";
-import Cards from "./Cards";
+import TopNav from "./partials/TopNav";
+import DropDown from "./partials/DropDown";
+import Loading from "./partials/Loading";
+import axios from "./utils/axios";
+import Cards from "./partials/Cards";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const TrendingPage = () => {
+const PopularPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,15 +15,14 @@ const TrendingPage = () => {
   }, []);
 
   const [data, setData] = useState(null);
-  const [trending, setTrending] = useState([]);
-  const [category, setCategory] = useState("all");
-  const [duration, setDuration] = useState("day");
+  const [popular, setpopular] = useState([]);
+  const [category, setCategory] = useState("movie");
   const [page, setpage] = useState(1);
   const [hasMore, sethasMore] = useState(true);
 
   const getHeaderData = async () => {
     try {
-      const res = await axios.get(`/trending/all/day`);
+      const res = await axios.get(`/${category}/popular?page=1`);
       const randomIndex = Math.floor(Math.random() * res.data.results.length);
       const randomData = res.data.results[randomIndex];
       setData(randomData);
@@ -32,36 +31,36 @@ const TrendingPage = () => {
     }
   };
 
-  const getTrendingData = async () => {
+  const getPopularData = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/${duration}?page=${page}`);
+      const { data } = await axios.get(`/${category}/popular?page=${page}`);
       if (data.results.length > 0) {
-        setTrending((prevState) => [...prevState, ...data.results]);
+        setpopular((prevState) => [...prevState, ...data.results]);
         setpage(page + 1);
       } else {
         sethasMore(false);
       }
     } catch (error) {
-      console.error("Error fetching trending data", error);
+      console.error("Error fetching popular data", error);
     }
   };
 
   const refreshHandler = () => {
-    if (trending.length === 0) {
-      getTrendingData();
+    if (popular.length === 0) {
+      getPopularData();
     } else {
       setpage(1);
-      setTrending([]);
-      getTrendingData();
+      setpopular([]);
+      getPopularData();
     }
   };
 
   useEffect(() => {
     refreshHandler();
     getHeaderData();
-  }, [category, duration]);
+  }, [category]);
 
-  return data && trending.length > 0 ? (
+  return data && popular.length > 0 ? (
     <div
       style={{
         background: `linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.5), rgba(0,0,0,.7)), url(https://image.tmdb.org/t/p/original/${
@@ -77,30 +76,24 @@ const TrendingPage = () => {
           <div onClick={() => navigate(-1)}>
             <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
           </div>
-          <h1 className="text-2xl font-semibold capitalize">Trending</h1>
+          <h1 className="text-2xl font-semibold capitalize">Popular</h1>
           <h1 className="text-2xl font-semibold capitalize">{category}</h1>
           <TopNav />
           <DropDown
             title="Filter"
-            options={["tv", "movie", "all"]}
+            options={["tv", "movie"]}
             func={(e) => setCategory(e.target.value.toLowerCase())}
-          />
-          <div className="w-[.5%]"></div>
-          <DropDown
-            title="Duration"
-            options={["week", "day"]}
-            func={(e) => setDuration(e.target.value.toLowerCase())}
           />
         </div>
 
         <div className="h-full w-full p-2 overflow-hidden">
           <InfiniteScroll
-            dataLength={trending.length}
-            next={getTrendingData}
+            dataLength={popular.length}
+            next={getPopularData}
             hasMore={hasMore}
             loader={<h4>Loading...</h4>}
           >
-            <Cards data={trending} />
+            <Cards data={popular} />
           </InfiniteScroll>
         </div>
       </div>
@@ -110,4 +103,4 @@ const TrendingPage = () => {
   );
 };
 
-export default TrendingPage;
+export default PopularPage;
