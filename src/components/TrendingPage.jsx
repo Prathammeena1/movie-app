@@ -73,7 +73,7 @@ const TrendingPage = () => {
       className="w-screen text-zinc-200"
     >
       <div className="h-full relative w-full bg-zinc-950/[.6] backdrop-blur">
-        <div className="w-full flex items-center gap-2 px-[3%] bg-zinc-950 sticky top-0">
+        <div className="w-full flex items-center gap-2 px-[3%] bg-zinc-950 sticky top-0 z-10">
           <div onClick={() => navigate(-1)}>
             <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
           </div>
