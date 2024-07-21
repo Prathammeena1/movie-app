@@ -12,9 +12,7 @@ const Cards = ({data,title}) => {
             <div className="w-[100%] shadow-lg aspect-square overflow-hidden rounded">
               <img
                 className="h-full w-full object-cover"
-                src={`https://image.tmdb.org/t/p/original/${
-                  d.backdrop_path || d.profile_path
-                }`}
+                src={ d.profile_path || d.backdrop_path ? `https://image.tmdb.org/t/p/original/${d.profile_path || d.backdrop_path}` : 'https://icon-library.com/images/no-icon-png/no-icon-png-6.jpg '}
                 alt=""
               />
             </div>
