@@ -15,7 +15,7 @@ const SideNav = () => {
                 <Link to='/popular'><h3 className='p-3 rounded text-lg hover:bg-zinc-300 hover:text-zinc-900 transition-all ease-linear duration-[.3s] '> <i className="ri-bard-fill mr-1"></i> Popular</h3></Link>
                 <Link to='/movie'><h3 className='p-3 rounded text-lg hover:bg-zinc-300 hover:text-zinc-900 transition-all ease-linear duration-[.3s] '> <i className="ri-movie-2-fill mr-1"></i> Movie</h3></Link>
                 <Link to='/tv'><h3 className='p-3 rounded text-lg hover:bg-zinc-300 hover:text-zinc-900 transition-all ease-linear duration-[.3s] '> <i className="ri-tv-2-fill mr-1"></i> Tv Shows</h3></Link>
-                <Link><h3 className='p-3 rounded text-lg hover:bg-zinc-300 hover:text-zinc-900 transition-all ease-linear duration-[.3s] '> <i className="ri-team-fill mr-1"></i> People</h3></Link>
+                <Link to='/people' ><h3 className='p-3 rounded text-lg hover:bg-zinc-300 hover:text-zinc-900 transition-all ease-linear duration-[.3s] '> <i className="ri-team-fill mr-1"></i> People</h3></Link>
             </div>
         </div>
         <hr className='outline-none border-zinc-600 my-4' />
