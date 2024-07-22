@@ -6,6 +6,9 @@ import PopularPage from "../components/PopularPage";
 import MoviePage from "../components/MoviePage";
 import TvShowPage from "../components/TvShowPage";
 import PeoplePage from "../components/PeoplePage";
+import MovieDetail from "../components/MovieDetail";
+import TvDetail from "../components/TvDetail";
+import PersonDetail from "../components/PersonDetail";
 
 const MainRouter = () => {
   return (
@@ -14,8 +17,11 @@ const MainRouter = () => {
       <Route path="/trending" element={<TrendingPage />} />
       <Route path="/popular" element={<PopularPage />} />
       <Route path="/movie" element={<MoviePage />} />
+      <Route path="/movie/detail/:id" element={<MovieDetail />} />
       <Route path="/tv" element={<TvShowPage />} />
-      <Route path="/people" element={<PeoplePage />} />
+      <Route path="/tv/detail/:id" element={<TvDetail />} />
+      <Route path="/person" element={<PeoplePage />} />
+      <Route path="/person/detail/:id" element={<PersonDetail />} />
     </Routes>
   );
 };

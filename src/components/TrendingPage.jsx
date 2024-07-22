@@ -100,7 +100,7 @@ const TrendingPage = () => {
             hasMore={hasMore}
             loader={<h4>Loading...</h4>}
           >
-            <Cards data={trending} />
+            <Cards data={trending} title={category} />
           </InfiniteScroll>
         </div>
       </div>

@@ -4,12 +4,15 @@ import DropDown from "./DropDown";
 
 const HorizontalCards = ({ data,func }) => {
 
+  data.forEach(d=>{
+    // console.log(d.media_type)
+  })
 
   return (
     
       <div className="w-full h-full overflow-x-auto mb-5 flex gap-2">
         {data.map((d, i) => (
-          <Link
+          <Link to={`/${d.media_type}/detail/${d.id}`}
             key={i}
             // to={`/details/${d.id}`} // Assuming you have a route for details page
             className="w-[16%] h-[37vh] overflow-hidden bg-zinc-800/[.3] hover:bg-zinc-600/[.3] transition-all duration-[.3s] flex-shrink-0 rounded p-4"

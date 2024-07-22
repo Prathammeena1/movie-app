@@ -93,7 +93,7 @@ useEffect(() => {
             hasMore={hasMore}
             loader={<h4>Loading...</h4>}
           >
-            <Cards data={tv} />
+            <Cards data={tv} title='tv' />
           </InfiniteScroll>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Cards = ({ data, description }) => {
-  console.log(data);
+const Cards = ({ data, description,title }) => {
+  console.log(title);
   return (
     <div className="flex flex-wrap w-full h-full gap-2 overflow-hidden">
       {data.map((d, i) => (
-        <Link
+        <Link to={`/${d.media_type || title}/detail/${d.id}`}
           key={i}
           // to={`/details/${d.id}`} // Assuming you have a route for details page
           className=" relative w-[16%] h-[45vh] bg-zinc-800/[.5] hover:bg-zinc-600/[.7] transition-all duration-[.3s] flex-shrink-0 rounded p-4"

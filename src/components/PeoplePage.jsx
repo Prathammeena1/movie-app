@@ -86,7 +86,7 @@ useEffect(() => {
             hasMore={hasMore}
             loader={<h4>Loading...</h4>}
           >
-            <Cards data={person} description={true} />
+            <Cards data={person} description={true} title='person' />
           </InfiniteScroll>
         </div>
       </div>
