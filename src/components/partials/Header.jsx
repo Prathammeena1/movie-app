@@ -27,7 +27,7 @@ const Header = ({data}) => {
           {data.overview && (
             <p className="text-sm text-zinc-400 leading-4 my-4 w-[80%]">
               {data.overview.slice(0, 200)}...{" "}
-              <Link className="text-blue-400 font-semibold">more</Link>{" "}
+              <Link to={`/${data.media_type}/detail/${data.id}`} className="text-blue-400 font-semibold">more</Link>{" "}
             </p>
           )}
           <p className="space-x-4 capitalize text-xl text-zinc-300 font-medium">
