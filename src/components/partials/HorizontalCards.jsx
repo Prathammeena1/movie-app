@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DropDown from "./DropDown";
 
-const HorizontalCards = ({ data,func }) => {
+const HorizontalCards = ({ data }) => {
 
   data.forEach(d=>{
     // console.log(d.media_type)
@@ -15,7 +15,7 @@ const HorizontalCards = ({ data,func }) => {
           <Link to={`/${d.media_type}/detail/${d.id}`}
             key={i}
             // to={`/details/${d.id}`} // Assuming you have a route for details page
-            className="w-[16%] h-[37vh] overflow-hidden bg-zinc-800/[.3] hover:bg-zinc-600/[.3] transition-all duration-[.3s] flex-shrink-0 rounded p-4"
+            className="w-[16%] overflow-hidden bg-zinc-800/[.3] hover:bg-zinc-600/[.3] transition-all duration-[.3s] flex-shrink-0 rounded p-4"
           >
             <div className="w-[100%] aspect-square overflow-hidden rounded">
               <img

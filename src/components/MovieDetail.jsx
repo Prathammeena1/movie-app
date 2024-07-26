@@ -11,6 +11,7 @@ import {
 import TopNav from "./partials/TopNav";
 import DropDown from "./partials/DropDown";
 import Loading from "../components/partials/Loading";
+import HorizontalCards from "./partials/HorizontalCards";
 
 const MovieDetail = () => {
   const { pathname } = useLocation();
@@ -26,7 +27,7 @@ const MovieDetail = () => {
     return () => {
       dispatch(removemovie());
     };
-  }, []);
+  }, [id]);
 
   return info ? (
     <div
@@ -35,11 +36,11 @@ const MovieDetail = () => {
         backgroundPosition: "top",
         backgroundSize: "cover",
       }}
-      className="h-screen w-full text-zinc-200"
+      className="w-full text-zinc-200"
     >
       <div className="h-full w-full text-zinc-200 bg-zinc-950/[.1] backdrop-blur">
         {/* p1 nav */}
-        <nav className="w-full flex items-center gap-4 px-[5%] py-[1.2%]  sticky top-0 z-10">
+        <nav className="w-full flex items-center gap-4 px-[5%] py-[1.2%] mb-6 bg-zinc-950/[.5] backdrop-blur sticky top-0 z-10">
           <div onClick={() => navigate(-1)}>
             <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
           </div>
@@ -134,7 +135,7 @@ const MovieDetail = () => {
               to={`${pathname}/trailer`}
               className="p-5 hover:bg-[rgba(133,44,192,1)]/[.8] duration-[.3s] font-medium bg-[rgba(133,44,192,1)] rounded-lg"
             >
-              <i class="ri-play-fill"></i>
+              <i class="ri-play-fill text-xl mr-3"></i>
               Play Trailer
             </Link>
           </div>
@@ -199,6 +200,22 @@ const MovieDetail = () => {
               ))}
             </div>
           )}
+        </div>
+
+        {/* part 4 recommendations and similar */}
+
+
+
+          <hr className="border-zinc-500 mx-[5%] mt-[3%]" />
+        <div className="px-[5%] py-[1%]">
+          <h1 className="text-2xl text-white mt-5 font-bold mb-3">Recommendations & similar stuff</h1>
+          <HorizontalCards
+            data={
+              info.recommendations.length > 0
+                ? info.recommendations
+                : info.similar
+            }
+          />
         </div>
       </div>
     </div>
