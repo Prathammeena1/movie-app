@@ -1,6 +1,6 @@
 import axios from "../utils/axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const TopNav = () => {
   const [query, setquery] = useState("");
@@ -18,6 +18,8 @@ const TopNav = () => {
     getSearch();
   },[query])
 
+
+
   return (
     <div className="sticky top-0 z-[99] bg-zinc-950/[.6] backdrop-blur py-5 mx-auto flex px-8 items-center w-full justify-center">
       <i className="ri-search-line text-xl"></i>
@@ -32,7 +34,7 @@ const TopNav = () => {
         <>
           <i onClick={() => setquery("")} className="ri-close-large-line cursor-pointer"></i>{" "}
           <div className="w-1/2 left-1/2 translate-x-[-50%] h-[45vh] bg-zinc-200 absolute z-[9] top-full flex flex-col gap-1 text-black rounded overflow-hidden overflow-y-auto ">
-            {searches &&  searches.results.map((s,i) => <Link to={`${s.media_type}/detail/${s.id}`} key={i} className="py-2 px-5 flex items-center gap-4 bg-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 transition-all ease-linear duration-[.3s]">
+            {searches &&  searches.results.map((s,i) => <Link to={`/${s.media_type}/detail/${s.id}`} key={i} className="py-2 px-5 flex items-center gap-4 bg-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 transition-all ease-linear duration-[.3s]">
               <img
                 className="h-10 w-10 object-cover rounded"
                 src={ s.profile_path || s.backdrop_path ? `https://image.tmdb.org/t/p/original/${s.profile_path || s.backdrop_path}` : 'https://icon-library.com/images/no-icon-png/no-icon-png-6.jpg '}
