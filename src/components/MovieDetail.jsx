@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie, removemovie } from "./store/actions/movieAction";
 import {
   Link,
+  Outlet,
   useLoaderData,
   useLocation,
   useNavigate,
@@ -38,7 +39,7 @@ const MovieDetail = () => {
       }}
       className="w-full text-zinc-200"
     >
-      <div className="h-full w-full text-zinc-200 bg-zinc-950/[.1] backdrop-blur">
+      <div className="relative h-full w-full text-zinc-200 bg-zinc-950/[.1] backdrop-blur">
         {/* p1 nav */}
         <nav className="w-full flex items-center gap-4 px-[5%] py-[1.2%] mb-6 bg-zinc-950/[.5] backdrop-blur sticky top-0 z-10">
           <div onClick={() => navigate(-1)}>
@@ -135,7 +136,7 @@ const MovieDetail = () => {
               to={`${pathname}/trailer`}
               className="p-5 hover:bg-[rgba(133,44,192,1)]/[.8] duration-[.3s] font-medium bg-[rgba(133,44,192,1)] rounded-lg"
             >
-              <i class="ri-play-fill text-xl mr-3"></i>
+              <i className="ri-play-fill text-xl mr-3"></i>
               Play Trailer
             </Link>
           </div>
@@ -217,6 +218,7 @@ const MovieDetail = () => {
             }
           />
         </div>
+      <Outlet/>
       </div>
     </div>
   ) : (

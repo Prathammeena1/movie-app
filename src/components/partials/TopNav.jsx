@@ -33,7 +33,7 @@ const TopNav = () => {
       {query.trim() !== "" && (
         <>
           <i onClick={() => setquery("")} className="ri-close-large-line cursor-pointer"></i>{" "}
-          <div className="w-1/2 left-1/2 translate-x-[-50%] h-[45vh] bg-zinc-200 absolute z-[9] top-full flex flex-col gap-1 text-black rounded overflow-hidden overflow-y-auto ">
+          <div className="w-1/2 left-1/2 translate-x-[-50%] max-h-[45vh] bg-zinc-200 absolute z-[9] top-full flex flex-col gap-1 text-black rounded overflow-hidden overflow-y-auto ">
             {searches &&  searches.results.map((s,i) => <Link to={`/${s.media_type}/detail/${s.id}`} key={i} className="py-2 px-5 flex items-center gap-4 bg-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 transition-all ease-linear duration-[.3s]">
               <img
                 className="h-10 w-10 object-cover rounded"
