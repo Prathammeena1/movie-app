@@ -11,7 +11,7 @@ const HorizontalCards = ({ data }) => {
   return (
     
       <div className="w-full h-full overflow-x-auto mb-5 flex gap-2">
-        {data.map((d, i) => (
+        { data.length>0 ? data.map((d, i) => (
           <Link to={`/${d.media_type}/detail/${d.id}`}
             key={i}
             // to={`/details/${d.id}`} // Assuming you have a route for details page
@@ -40,7 +40,7 @@ const HorizontalCards = ({ data }) => {
               </p>
             )}
           </Link>
-        ))}
+        )): <h1 className="text-3xl text-center mt-5 font-black ">No Data</h1>}
     </div>
   );
 };

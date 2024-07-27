@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie, removemovie } from "./store/actions/movieAction";
 import {
@@ -9,8 +9,6 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import TopNav from "./partials/TopNav";
-import DropDown from "./partials/DropDown";
 import Loading from "../components/partials/Loading";
 import HorizontalCards from "./partials/HorizontalCards";
 
@@ -30,6 +28,7 @@ const MovieDetail = () => {
     };
   }, [id]);
 
+
   return info ? (
     <div
       style={{
@@ -39,7 +38,9 @@ const MovieDetail = () => {
       }}
       className="w-full text-zinc-200"
     >
-      <div className="relative h-full w-full text-zinc-200 bg-zinc-950/[.1] backdrop-blur">
+      <div
+        className="relative h-screen overflow-y-auto  w-full text-zinc-200 bg-zinc-950/[.1] backdrop-blur"
+      >
         {/* p1 nav */}
         <nav className="w-full flex items-center gap-4 px-[5%] py-[1.2%] mb-6 bg-zinc-950/[.5] backdrop-blur sticky top-0 z-10">
           <div onClick={() => navigate(-1)}>
@@ -144,7 +145,7 @@ const MovieDetail = () => {
 
         {/* p3 poster and dets */}
 
-        <div className="w-[80%] px-[5%] flex flex-col gap-y-5">
+        <div className="w-[80%] px-[5%] mt-5 flex flex-col gap-y-5">
           {info.watchProviders && info.watchProviders.flatrate && (
             <div className="flex gap-5 items-center text-white">
               <h1 className="font-semibold">Available on Platform</h1>
@@ -205,11 +206,11 @@ const MovieDetail = () => {
 
         {/* part 4 recommendations and similar */}
 
-
-
-          <hr className="border-zinc-500 mx-[5%] mt-[3%]" />
+        <hr className="border-zinc-500 mx-[5%] mt-[3%]" />
         <div className="px-[5%] py-[1%]">
-          <h1 className="text-2xl text-white mt-5 font-bold mb-3">Recommendations & similar stuff</h1>
+          <h1 className="text-2xl text-white mt-5 font-bold mb-3">
+            Recommendations & similar stuff
+          </h1>
           <HorizontalCards
             data={
               info.recommendations.length > 0
@@ -218,8 +219,8 @@ const MovieDetail = () => {
             }
           />
         </div>
-      <Outlet/>
       </div>
+        <Outlet />
     </div>
   ) : (
     <Loading />
