@@ -117,7 +117,9 @@ const TvDetail = () => {
               <h1 className="">
                 {info.detail.genres.map((g) => g.name).join(", ")}
               </h1>
+              {info.detail.runtime &&
               <h1 className="">{info.detail.runtime} min</h1>
+              }
             </div>
 
             <h1 className="text-xl font-semibold italic text-zinc-200">
