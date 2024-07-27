@@ -28,6 +28,8 @@ const TvDetail = () => {
     };
   }, [id]);
 
+  console.log(pathname)
+
 
   return info ? (
     <div
@@ -204,6 +206,20 @@ const TvDetail = () => {
           )}
         </div>
 
+        {/* part 4 seasons */}
+
+        <hr className="border-zinc-500 mx-[5%] mt-[3%]" />
+        <div className="px-[5%] py-[1%]">
+          <h1 className="text-2xl text-white mt-5 font-bold mb-3">
+            Seasons
+          </h1>
+          <HorizontalCards
+            data={
+              info.detail.seasons
+            }
+          />
+        </div>
+
         {/* part 4 recommendations and similar */}
 
         <hr className="border-zinc-500 mx-[5%] mt-[3%]" />
@@ -219,6 +235,8 @@ const TvDetail = () => {
             }
           />
         </div>
+
+
       </div>
         <Outlet />
     </div>

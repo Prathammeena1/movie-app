@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import DropDown from "./DropDown";
 
 const HorizontalCards = ({ data }) => {
-
-  data.forEach(d=>{
+  data.forEach((d) => {
     // console.log(d.media_type)
-  })
+  });
 
   return (
-    
-      <div className="w-full h-full overflow-x-auto mb-5 flex gap-2">
-        { data.length>0 ? data.map((d, i) => (
-          <Link to={`/${d.media_type}/detail/${d.id}`}
+    <div className="w-full h-full overflow-x-auto mb-5 flex gap-2">
+      {data.length > 0 ? (
+        data.map((d, i) => (
+          <Link
+            to={`/${d.media_type}/detail/${d.id}`}
             key={i}
             // to={`/details/${d.id}`} // Assuming you have a route for details page
             className="w-[16%] overflow-hidden bg-zinc-800/[.3] hover:bg-zinc-600/[.3] transition-all duration-[.3s] flex-shrink-0 rounded p-4"
@@ -20,9 +20,13 @@ const HorizontalCards = ({ data }) => {
             <div className="w-[100%] aspect-square overflow-hidden rounded">
               <img
                 className="h-full w-full object-cover"
-                src={`https://image.tmdb.org/t/p/original/${
-                  d.backdrop_path || d.profile_path
-                }`}
+                src={
+                  d.backdrop_path || d.profile_path || d.poster_path
+                    ? `https://image.tmdb.org/t/p/original/${
+                        d.backdrop_path || d.profile_path || d.poster_path
+                      }`
+                    : "https://icon-library.com/images/no-icon-png/no-icon-png-6.jpg "
+                }
                 alt=""
               />
             </div>
@@ -40,7 +44,10 @@ const HorizontalCards = ({ data }) => {
               </p>
             )}
           </Link>
-        )): <h1 className="text-3xl text-center mt-5 font-black ">No Data</h1>}
+        ))
+      ) : (
+        <h1 className="text-3xl text-center mt-5 font-black ">No Data</h1>
+      )}
     </div>
   );
 };

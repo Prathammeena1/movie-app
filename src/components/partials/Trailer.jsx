@@ -14,7 +14,7 @@ const Trailer = () => {
   return (
     <div className="fixed top-0 left-0 w-full h-screen z-[100] flex items-center justify-center  bg-zinc-950/[.9]">
       <div onClick={() => navigate(-1)}>
-        <i className="ri-close-line absolute top-[5%] right-[5%] text-4xl cursor-pointer hover:scale-[.9] hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
+        <i className="ri-close-line absolute z-[99] top-[5%] right-[5%] text-4xl cursor-pointer hover:scale-[.9] hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
       </div>
 
       {ytVideo ? (
