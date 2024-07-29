@@ -34,7 +34,7 @@ const TvDetail = () => {
   return info ? (
     <div
       style={{
-        background: `linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.5),rgba(0,0,0,.7)), url(https://image.tmdb.org/t/p/original/${info.detail.backdrop_path}) `,
+        background: `linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.5),rgba(0,0,0,.7)), url(https://image.tmdb.org/t/p/original/${info.detail.poster_path}) `,
         backgroundPosition: "top",
         backgroundSize: "cover",
       }}
@@ -81,11 +81,11 @@ const TvDetail = () => {
             src={
               info.detail.profile_path ||
               info.detail.backdrop_path ||
-              info.detail.poster_path
+              info.detail.poster_path 
                 ? `https://image.tmdb.org/t/p/original/${
+                  info.detail.poster_path ||
                     info.detail.profile_path ||
-                    info.detail.backdrop_path ||
-                    info.detail.poster_path
+                    info.detail.backdrop_path 
                   }`
                 : "https://icon-library.com/images/no-icon-png/no-icon-png-6.jpg "
             }
@@ -215,11 +215,41 @@ const TvDetail = () => {
           <h1 className="text-2xl text-white mt-5 font-bold mb-3">
             Seasons
           </h1>
-          <HorizontalCards
-            data={
-              info.detail.seasons
-            }
-          />
+          
+          <div className="w-full h-full overflow-x-auto mb-5 flex gap-2">
+      {info.detail.seasons.length > 0 ? (
+        info.detail.seasons.map((d, i) => (
+          <div
+            key={i}
+            // to={`/details/${d.id}`} // Assuming you have a route for details page
+            className="w-[16%] overflow-hidden bg-zinc-800/[.3] hover:bg-zinc-600/[.3] transition-all duration-[.3s] flex-shrink-0 rounded p-4"
+          >
+            <div className="w-[100%] aspect-square overflow-hidden rounded">
+              <img
+                className="h-full w-full object-cover"
+                src={
+                  d.backdrop_path || d.profile_path || d.poster_path
+                    ? `https://image.tmdb.org/t/p/original/${
+                        d.backdrop_path || d.profile_path || d.poster_path
+                      }`
+                    : "https://icon-library.com/images/no-icon-png/no-icon-png-6.jpg "
+                }
+                alt=""
+              />
+            </div>
+            <h1 className="text-sm my-2">
+              {(d.title && d.title.slice(0, 10)) ||
+                (d.original_title && d.original_title.slice(0, 10)) ||
+                (d.original_name && d.original_name.slice(0, 10)) ||
+                (d.name && d.name.slice(0, 10))}
+              ...
+            </h1>
+          </div>
+        ))
+      ) : (
+        <h1 className="text-3xl text-center mt-5 font-black ">No Data Available</h1>
+      )}
+    </div>
         </div>
 
         {/* part 4 recommendations and similar */}

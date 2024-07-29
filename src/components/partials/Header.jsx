@@ -40,7 +40,7 @@ const Header = ({data}) => {
             )}{" "}
             {data.media_type}
           </p>
-          <button className="px-5 py-2 bg-[rgba(133,44,192,1)] w-fit rounded font-medium my-4 hover:bg-[rgba(133,44,192,.7)] transition-all duration-[.3s]">Watch Trailer</button>
+          <Link to={`/${data.media_type}/detail/${data.id}/trailer`} className="px-5 py-2 bg-[rgba(133,44,192,1)] w-fit rounded font-medium my-4 hover:bg-[rgba(133,44,192,.7)] transition-all duration-[.3s]">Watch Trailer</Link>
         </div>
       </div>
     )

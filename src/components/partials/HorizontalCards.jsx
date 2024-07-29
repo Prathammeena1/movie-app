@@ -46,7 +46,7 @@ const HorizontalCards = ({ data }) => {
           </Link>
         ))
       ) : (
-        <h1 className="text-3xl text-center mt-5 font-black ">No Data</h1>
+        <h1 className="text-3xl text-center mt-5 font-black ">No Data Available</h1>
       )}
     </div>
   );
