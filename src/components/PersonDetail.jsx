@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadperson, removeperson } from "./store/actions/personAction";
 import {
@@ -11,9 +11,11 @@ import {
 } from "react-router-dom";
 import Loading from "../components/partials/Loading";
 import HorizontalCards from "./partials/HorizontalCards";
+import DropDown from "./partials/DropDown";
 
 const PersonDetail = () => {
   const { pathname } = useLocation();
+  const [category, setcategory] = useState("movie");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const PersonDetail = () => {
   }, [id]);
 
   return info ? (
-    <div className="w-full text-zinc-200 h-full overflow-y-auto">
+    <div className="w-full text-zinc-200 h-screen">
       {/* p1 nav */}
       <nav className="w-full flex items-center gap-4 px-[5%] py-[1.2%] mb-6 bg-zinc-950/[.5] backdrop-blur sticky top-0 z-10">
         <div onClick={() => navigate(-1)}>
@@ -39,7 +41,7 @@ const PersonDetail = () => {
 
       <div className="w-full flex px-3">
         {/* part 2  left poster and details */}
-        <div className="px-[5%] w-[30vw] ">
+        <div className="px-[5%] w-[23vw] ">
           <img
             className="mx-auto w-full aspect-[4/5] object-cover rounded"
             src={
@@ -58,7 +60,7 @@ const PersonDetail = () => {
           <hr className="border-zinc-500 mt-[10%] mb-[5%] " />
 
           {/* social media  */}
-          <div className="flex gap-x-8 text-2xl justify-center">
+          <div className="flex gap-x-5 text-2xl justify-center">
             <a
               target="_blank"
               className="hover:text-zinc-400 transition-all duration-[.3s]"
@@ -71,7 +73,7 @@ const PersonDetail = () => {
               className="hover:text-zinc-400 transition-all duration-[.3s]"
               href={`https://www.facebook.com/${info.externalId.facebook_id}`}
             >
-              <i class="ri-facebook-line"></i>
+              <i className="ri-facebook-line"></i>
             </a>
 
             <a
@@ -79,7 +81,7 @@ const PersonDetail = () => {
               className="hover:text-zinc-400 transition-all duration-[.3s]"
               href={`https://www.instagram.com/${info.externalId.instagram_id}`}
             >
-              <i class="ri-instagram-line"></i>
+              <i className="ri-instagram-line"></i>
             </a>
 
             <a
@@ -87,13 +89,13 @@ const PersonDetail = () => {
               className="hover:text-zinc-400 transition-all duration-[.3s]"
               href={`https://x.com/${info.externalId.twitter_id}`}
             >
-              <i class="ri-twitter-x-line"></i>
+              <i className="ri-twitter-x-line"></i>
             </a>
           </div>
 
           {/* persnol info */}
 
-          <h1 className="text-2xl mt-10 font-semibold text-zinc-400 capitalize">
+          <h1 className="text-2xl mt-5  font-semibold text-zinc-400 capitalize">
             {" "}
             personal info
           </h1>
@@ -161,7 +163,7 @@ const PersonDetail = () => {
                 </h1>{" "}
                 <h1 className="text-zinc-400 capitalize text-sm leading-none">
                   {" "}
-                  {info.detail.also_known_as.slice(0,4).join(', ')}
+                  {info.detail.also_known_as.slice(0, 4).join(", ")}
                 </h1>{" "}
               </div>
             )}
@@ -170,7 +172,7 @@ const PersonDetail = () => {
 
         {/* part 3 details and info  */}
 
-        <div className="w-[70%]">
+        <div className="w-[90%] h-[85vh] overflow-y-auto">
           <h1 className="text-6xl font-black  capitalize">
             {" "}
             {info.detail.name}
@@ -189,15 +191,46 @@ const PersonDetail = () => {
             </div>
           )}
 
-          {info.detail.biography && (
-            <div>
-              <h1 className="text-xl font-semibold mt-3 text-zinc-400 capitalize">
-                {" "}
-                Know For{" "}
-              </h1>
+          {info.combinedCredits.cast && (
+            <div className="pr-[5%]">
               <HorizontalCards data={info.combinedCredits.cast} />
             </div>
           )}
+
+          <div>
+            <div className="w-full flex justify-between">
+              <h1 className="text-xl font-semibold mt-3 text-zinc-400 capitalize">
+                {" "}
+                Acting{" "}
+              </h1>
+              <DropDown
+                title="Category"
+                options={["tv", "movie"]}
+                func={(e) => setcategory(e.target.value)}
+              />
+            </div>
+
+            <div className="w-full list-disc text-zinc-400 h-[50vh] overflow-x-hidden overflow-y-auto mt-5 p-5">
+            {info[category + 'Credits'].cast.map((c,i) =>
+              <li key={i} className="hover:text-white hover:bg-zinc-900 mb-1 rounded duration-[.3] transition-all cursor-pointer">
+                <Link>
+                 <h1 className="text-xl font-black">
+              {c.title ||
+                c.original_title ||
+                c.original_name ||
+                c.name}
+            </h1>
+
+
+
+                  <span className="block">Character Name</span>
+                </Link>
+              </li>
+            )}
+            </div>
+
+
+          </div>
         </div>
       </div>
     </div>
