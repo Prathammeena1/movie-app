@@ -215,10 +215,7 @@ const PersonDetail = () => {
               <li key={i} className="hover:text-white hover:bg-zinc-900 mb-1 rounded duration-[.3] transition-all cursor-pointer">
                 <Link>
                  <h1 className="text-xl font-black">
-              {c.title ||
-                c.original_title ||
-                c.original_name ||
-                c.name}
+              
             </h1>
 
 
