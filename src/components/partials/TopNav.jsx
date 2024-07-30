@@ -1,6 +1,8 @@
+import { useGSAP } from "@gsap/react";
 import axios from "../utils/axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import gsap from "gsap";
 
 const TopNav = () => {
   const [query, setquery] = useState("");
@@ -13,6 +15,23 @@ const TopNav = () => {
     setsearches(res.data);
   }
 
+  const openRef = useRef(null)
+
+
+  useGSAP(()=>{
+
+    const currentOpen = openRef.current;
+    if (currentOpen) {
+      currentOpen.addEventListener('click', ()=>{
+        gsap.to('.sideNav',{
+            left: '0%'
+            })
+      });
+    }
+})
+
+
+
 
   useEffect(()=>{
     getSearch();
@@ -22,7 +41,7 @@ const TopNav = () => {
 
   return (
     <div className="sticky top-[-1px] z-[99] bg-zinc-950/[.6] backdrop-blur py-5 mx-auto flex px-8 items-center w-full justify-center">
-      <i className="ri-menu-2-line absolute text-xl left-[5%]"></i>
+      <i ref={openRef} className="ri-menu-2-line absolute text-xl left-[5%]"></i>
       <i className="ri-search-line text-xl ml-10 md:ml-0"></i>
       <input
         onChange={(e) => setquery(e.target.value)}
