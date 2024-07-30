@@ -8,9 +8,6 @@ const SideNav = () => {
     const closeRef = useRef(null)
 
     useGSAP(()=>{
-        gsap.to('.sideNav',{
-            left: '0%'
-        })
 
         const currentClose = closeRef.current;
         if (currentClose) {

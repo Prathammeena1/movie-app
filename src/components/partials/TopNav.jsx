@@ -31,6 +31,8 @@ const TopNav = () => {
 })
 
 
+const {pathname} =useLocation()
+console.log(pathname)
 
 
   useEffect(()=>{
@@ -40,8 +42,10 @@ const TopNav = () => {
 
 
   return (
-    <div className="sticky top-[-1px] z-[99] bg-zinc-950/[.6] backdrop-blur py-5 mx-auto flex px-8 items-center w-full justify-center">
+    <div className="sticky top-[-1px] z-[99] bg-zinc-950/[.6] backdrop-blur py-5 mx-auto flex px-8 items-center md:w-full justify-center">
+      {pathname == '/' &&
       <i ref={openRef} className="ri-menu-2-line absolute text-xl left-[5%]"></i>
+      }
       <i className="ri-search-line text-xl ml-10 md:ml-0"></i>
       <input
         onChange={(e) => setquery(e.target.value)}
