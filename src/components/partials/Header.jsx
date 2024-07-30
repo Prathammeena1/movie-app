@@ -15,17 +15,17 @@ const Header = ({data}) => {
           backgroundPosition: "top",
           backgroundSize: "cover",
         }}
-        className="h-[70vh] w-full backdrop-blur-lg"
+        className="md:h-[70vh] h-[90vh] w-full backdrop-blur-lg"
       >
-        <div className="h-full w-[70%] bg-gradient-to-r from-black/[.5] to-transparent flex flex-col justify-end px-[5%] py-[3%]  ">
-          <h1 className="text-4xl text-white font-bold uppercase tracking-widest w-[80%]">
+        <div className="h-full md:w-[70%] bg-gradient-to-r from-black/[.5] to-transparent flex flex-col justify-end px-[5%] py-[3%]  ">
+          <h1 className="text-4xl text-white font-bold uppercase tracking-widest md:w-[80%] w-full">
             {data.original_name ||
               data.name ||
               data.original_title ||
               data.title}
           </h1>
           {data.overview && (
-            <p className="text-sm text-zinc-400 leading-4 my-4 w-[80%]">
+            <p className="text-sm text-zinc-400 leading-4 my-4 md:w-[80%] w-full">
               {data.overview.slice(0, 200)}...{" "}
               <Link to={`/${data.media_type}/detail/${data.id}`} className="text-blue-400 font-semibold">more</Link>{" "}
             </p>

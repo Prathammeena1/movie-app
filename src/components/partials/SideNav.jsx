@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const SideNav = () => {
   return (
-    <div className='h-full w-[20%] bg-zinc-950/[.6] backdrop-blur-lg pt-5 px-8 text-white capitalize border-r border-zinc-600'>
+    <div className='h-full w-[20%] md:relative md:left-[0%] bg-zinc-950/[.6] backdrop-blur-lg pt-5 px-8 text-white capitalize border-r border-zinc-600 absolute left-[-100%]'>
         <div className='flex gap-2 items-center font-semibold' >
             <img className='h-7' src="/svg/logo.svg" alt="" />
             <span className='text-2xl'>Movie App</span>

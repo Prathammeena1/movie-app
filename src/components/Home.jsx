@@ -40,10 +40,10 @@ const Home = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
       }}
-      className="flex h-full w-full"
+      className="flex h-full w-full relative overflow-hidden"
     >
       <SideNav />
-      <div className=" w-[80%] bg-zinc-950/[.2] backdrop-blur-lg text-white overflow-auto ">
+      <div className=" w-full md:w-[80%] bg-zinc-950/[.2] backdrop-blur-lg text-white overflow-x-auto ">
         <TopNav />
         <Header data={data} />
         <div className="w-full pt-5 px-5 overflow-y-hidden flex flex-col justify-between gap-4">

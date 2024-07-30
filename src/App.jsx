@@ -6,7 +6,7 @@ const App = () => {
 
   return (
     
-    <div className="h-screen w-full bg-zinc-950">
+    <div className="h-screen w-full bg-zinc-950 overflow-hidden">
         <MainRouter /> 
     </div>
   );
