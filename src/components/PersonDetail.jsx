@@ -21,7 +21,6 @@ const PersonDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { info } = useSelector((state) => state.person);
-  console.log(info);
 
   useEffect(() => {
     dispatch(asyncloadperson(id));
@@ -197,9 +196,14 @@ const PersonDetail = () => {
             </div>
           )}
 
-          <div>
-            <div className="w-full flex justify-between">
-              <h1 className="text-xl font-semibold mt-3 text-zinc-400 capitalize">
+
+
+<hr className="border-zinc-500 my-[2%] mr-[5%] " />
+
+
+          <div className="pr-[5%] overflow-hidden">
+            <div className="w-full flex justify-between items-center">
+              <h1 className="text-xl font-semibold text-zinc-400 capitalize">
                 {" "}
                 Acting{" "}
               </h1>
@@ -210,10 +214,11 @@ const PersonDetail = () => {
               />
             </div>
 
-            <div className="w-full list-disc text-zinc-400 h-[50vh] overflow-x-hidden overflow-y-auto mt-5 p-5">
+            <div className="w-full list-disc text-zinc-400 h-[50vh] overflow-x-hidden overflow-y-auto mt-5">
+
             {info[category + 'Credits'].cast.map((c,i) =>
-              <li key={i} className="hover:text-white hover:bg-zinc-900 mb-1 rounded duration-[.3] transition-all cursor-pointer">
-                <Link>
+              <div key={i} className={`hover:text-white p-2 px-4 border-b border-zinc-600 hover:bg-zinc-900 mb-1 rounded duration-[.3] transition-all cursor-pointer`}>
+                <Link to={`/${category}/detail/${c.id}`}>
                  <h1 className="text-xl font-black">
               {c.title ||
                 c.original_title ||
@@ -223,9 +228,9 @@ const PersonDetail = () => {
 
 
 
-                  <span className="block">Character Name</span>
+                  <p>{c.character && `Character Name : ${c.character}` }</p>
                 </Link>
-              </li>
+              </div>
             )}
             </div>
 

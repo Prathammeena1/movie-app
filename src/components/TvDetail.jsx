@@ -19,7 +19,6 @@ const TvDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { info } = useSelector((state) => state.tv);
-  console.log(info);
 
   useEffect(() => {
     dispatch(asyncloadtv(id));
@@ -28,7 +27,6 @@ const TvDetail = () => {
     };
   }, [id]);
 
-  console.log(pathname)
 
 
   return info ? (

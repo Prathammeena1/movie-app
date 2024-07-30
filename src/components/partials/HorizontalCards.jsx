@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import DropDown from "./DropDown";
 
 const HorizontalCards = ({ data }) => {
-  data.forEach((d) => {
-    // console.log(d.media_type)
-  });
-
+  
   return (
     <div className="w-full h-full overflow-x-auto mb-5 flex gap-2">
       {data.length > 0 ? (

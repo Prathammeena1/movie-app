@@ -9,7 +9,6 @@ const Trailer = () => {
   const navigate = useNavigate();
   const category = pathname.includes("movie") ? "movie" : "tv";
   const ytVideo = useSelector((state) => state[category].info.videos);
-  console.log(category, ytVideo);
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen z-[100] flex items-center justify-center  bg-zinc-950/[.9]">

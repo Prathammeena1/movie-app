@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Cards = ({ data, description,title }) => {
-  console.log(title);
   return (
     <div className="flex flex-wrap w-full h-full gap-2 overflow-hidden">
       {data.map((d, i) => (
