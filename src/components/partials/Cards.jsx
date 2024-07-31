@@ -8,7 +8,7 @@ const Cards = ({ data, description,title }) => {
         <Link to={`/${d.media_type || title}/detail/${d.id}`}
           key={i}
           // to={`/details/${d.id}`} // Assuming you have a route for details page
-          className=" relative md:w-[16%] w-[31%] md:h-[45vh] bg-zinc-800/[.5] hover:bg-zinc-600/[.7] transition-all duration-[.3s] flex-shrink-0 rounded md:p-4"
+          className=" relative md:w-[16%] w-[31%] md:h-[45vh] px-1 bg-zinc-800/[.5] hover:bg-zinc-600/[.7] transition-all duration-[.3s] flex-shrink-0 rounded md:p-4"
         >
           <div
             className={

@@ -74,7 +74,7 @@ const TrendingPage = () => {
       className="w-screen text-zinc-200"
     >
       <div className="h-full relative w-full bg-zinc-950/[.6] backdrop-blur">
-        <div className="w-full flex flex-col md:flex-row  md:items-center gap-2 px-[3%] bg-zinc-950 sticky top-0 z-10">
+        <div className="w-full flex flex-col md:flex-row  md:items-center justify-between gap-2 px-[3%] bg-zinc-950 sticky top-0 z-10">
           <div className="flex gap-2 items-center mt-5 md:mt-0">
             <div onClick={() => navigate(-1)}>
               <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
@@ -86,7 +86,7 @@ const TrendingPage = () => {
               {category}
             </h1>
           </div>
-          <div>
+          <div className="md:w-[70%]">
             <TopNav />
           </div>
           <div className="flex gap-2 mb-5 md:mb-0">
