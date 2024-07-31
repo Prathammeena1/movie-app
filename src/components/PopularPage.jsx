@@ -82,7 +82,7 @@ useEffect(() => {
             <h1 className="md:text-2xl text-xl font-semibold capitalize">
             Popular
             </h1>
-            <h1 className="md:text-2xl text-xl font-semibold capitalize">
+            <h1 className="md:text-2xl font-semibold capitalize">
               {category}
             </h1>
           </div>

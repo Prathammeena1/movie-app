@@ -10,14 +10,14 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const TvShowPage = () => {
   const navigate = useNavigate();
 
-
-const [data, setData] = useState(null);
-const [tv, settv] = useState([]);
-const [category, setCategory] = useState("airing_today");
-const [page, setpage] = useState(1);
-const [hasMore, sethasMore] = useState(true);
-useEffect(() => {
-    document.title = "Movie App | Tv Shows " + category.toUpperCase().split('_').join(" ");
+  const [data, setData] = useState(null);
+  const [tv, settv] = useState([]);
+  const [category, setCategory] = useState("airing_today");
+  const [page, setpage] = useState(1);
+  const [hasMore, sethasMore] = useState(true);
+  useEffect(() => {
+    document.title =
+      "Movie App | Tv Shows " + category.toUpperCase().split("_").join(" ");
   }, [category]);
 
   const getHeaderData = async () => {
@@ -72,18 +72,29 @@ useEffect(() => {
       className="w-screen text-zinc-200"
     >
       <div className="h-full relative w-full bg-zinc-950/[.6] backdrop-blur">
-        <div className="w-full flex items-center gap-2 px-[3%] bg-zinc-950 sticky top-0 z-10">
-          <div onClick={() => navigate(-1)}>
-            <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
+
+        <div className="w-full flex flex-col md:flex-row  md:items-center gap-2 px-[3%] bg-zinc-950 sticky top-0 z-10 justify-between">
+          <div className="flex gap-2 items-center mt-5 md:mt-0">
+            <div onClick={() => navigate(-1)}>
+              <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
+            </div>
+            <h1 className="md:text-2xl text-xl font-semibold capitalize">
+              Tv Shows
+            </h1>
+            <h1 className="md:text-2xl font-semibold capitalize h-fit md:w-[14vw]">
+              {category.split("_").join(" ")}
+            </h1>
           </div>
-          <h1 className="text-2xl font-semibold capitalize w-[10vw]">Tv Shows</h1>
-          <h1 className="text-2xl font-semibold capitalize h-fit w-[14vw]">{category.split('_').join(" ")}</h1>
-          <TopNav />
-          <DropDown
-            title="Filter"
-            options={['airing_today','popular','top_rated','on_the_air']}
-            func={(e) => setCategory(e.target.value.toLowerCase())}
-          />
+          <div className="md:w-[70%]">
+            <TopNav />
+          </div>
+          <div className="flex gap-2 mb-5 md:mb-0">
+            <DropDown
+              title="Filter"
+              options={['airing_today','popular','top_rated','on_the_air']}
+              func={(e) => setCategory(e.target.value.toLowerCase())}
+            />
+          </div>
         </div>
 
         <div className="h-full w-full p-2 overflow-hidden">
@@ -93,7 +104,7 @@ useEffect(() => {
             hasMore={hasMore}
             loader={<h4>Loading...</h4>}
           >
-            <Cards data={tv} title='tv' />
+            <Cards data={tv} title="tv" />
           </InfiniteScroll>
         </div>
       </div>
