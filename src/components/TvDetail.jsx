@@ -73,7 +73,7 @@ const TvDetail = () => {
 
         {/* p2 poster and dets */}
 
-        <div className="flex w-full px-[5%]">
+        <div className="flex flex-col md:flex-row w-full px-[5%]">
           <img
             className="h-[50vh] aspect-[4/5] object-cover rounded"
             src={
@@ -103,7 +103,7 @@ const TvDetail = () => {
 
             <div className="flex gap-x-3 items-center text-white mt-3 mb-3 ">
               {info.detail.vote_average && (
-                <span className="bg-yellow-600 z-[9] text-lg w-[6vh] aspect-square rounded-full flex items-center justify-center">
+                <span className="bg-yellow-600 z-[9] text-lg md:w-[6vh] w-[8vh] aspect-square rounded-full flex items-center justify-center">
                   {(info.detail.vote_average * 10).toFixed()} <sup>%</sup>
                 </span>
               )}
@@ -220,7 +220,7 @@ const TvDetail = () => {
           <div
             key={i}
             // to={`/details/${d.id}`} // Assuming you have a route for details page
-            className="w-[16%] overflow-hidden bg-zinc-800/[.3] hover:bg-zinc-600/[.3] transition-all duration-[.3s] flex-shrink-0 rounded p-4"
+            className="md:w-[16%] w-[35%] overflow-hidden bg-zinc-800/[.3] hover:bg-zinc-600/[.3] transition-all duration-[.3s] flex-shrink-0 rounded md:p-4"
           >
             <div className="w-[100%] aspect-square overflow-hidden rounded">
               <img
@@ -235,7 +235,7 @@ const TvDetail = () => {
                 alt=""
               />
             </div>
-            <h1 className="text-sm my-2">
+            <h1 className="text-sm my-2  hidden md:block">
               {(d.title && d.title.slice(0, 10)) ||
                 (d.original_title && d.original_title.slice(0, 10)) ||
                 (d.original_name && d.original_name.slice(0, 10)) ||

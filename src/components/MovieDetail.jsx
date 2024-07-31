@@ -41,7 +41,7 @@ const MovieDetail = () => {
         className="relative h-screen overflow-y-auto  w-full text-zinc-200 bg-zinc-950/[.1] backdrop-blur"
       >
         {/* p1 nav */}
-        <nav className="w-full flex items-center gap-4 px-[5%] py-[1.2%] mb-6 bg-zinc-950/[.5] backdrop-blur sticky top-0 z-10">
+        <nav className="w-full flex items-center gap-4 px-[5%] py-[1.2%] mb-6 bg-zinc-950/[.5] backdrop-blur sticky top-[-1px] z-10">
           <div onClick={() => navigate(-1)}>
             <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
           </div>
@@ -72,7 +72,7 @@ const MovieDetail = () => {
 
         {/* p2 poster and dets */}
 
-        <div className="flex w-full px-[5%]">
+        <div className="flex flex-col md:flex-row w-full px-[5%]">
           <img
             className="h-[50vh] aspect-[4/5] object-cover rounded"
             src={
@@ -102,7 +102,7 @@ const MovieDetail = () => {
 
             <div className="flex gap-x-3 items-center text-white mt-3 mb-3 ">
               {info.detail.vote_average && (
-                <span className="bg-yellow-600 z-[9] text-lg w-[6vh] aspect-square rounded-full flex items-center justify-center">
+                <span className="bg-yellow-600 z-[9] text-lg md:w-[6vh] w-[10vh] aspect-square rounded-full flex items-center justify-center">
                   {(info.detail.vote_average * 10).toFixed()} <sup>%</sup>
                 </span>
               )}
