@@ -30,17 +30,17 @@ const PersonDetail = () => {
   }, [id]);
 
   return info ? (
-    <div className="w-full text-zinc-200 h-screen">
+    <div className="w-full text-zinc-200 md:h-screen">
       {/* p1 nav */}
-      <nav className="w-full flex items-center gap-4 px-[5%] py-[1.2%] mb-6 bg-zinc-950/[.5] backdrop-blur sticky top-0 z-10">
+      <nav className="w-full flex items-center gap-4 px-[5%] py-[1.2%] mb-6 bg-zinc-950/[.5] backdrop-blur sticky top-[-1px] z-10">
         <div onClick={() => navigate(-1)}>
           <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
         </div>
       </nav>
 
-      <div className="w-full flex px-3">
+      <div className="w-full md:flex-row flex-col h-full gap-2 md:gap-0 flex px-3">
         {/* part 2  left poster and details */}
-        <div className="px-[5%] w-[23vw] ">
+        <div className="px-[5%] md:w-[23vw] ">
           <img
             className="mx-auto w-full aspect-[4/5] object-cover rounded"
             src={
@@ -168,10 +168,12 @@ const PersonDetail = () => {
             )}
           </div>
         </div>
+<hr className="border-zinc-500 mt-[4%] mx-[5%] " />
+
 
         {/* part 3 details and info  */}
 
-        <div className="w-[90%] h-[85vh] overflow-y-auto">
+        <div className="md:w-[90%] w-full px-[5%] md:px-0 md:h-[85vh] md:overflow-y-auto">
           <h1 className="text-6xl font-black  capitalize">
             {" "}
             {info.detail.name}
@@ -183,7 +185,7 @@ const PersonDetail = () => {
                 {" "}
                 Biography{" "}
               </h1>
-              <h1 className="text-zinc-400 capitalize text-sm mt-3 w-[90%]">
+              <h1 className="text-zinc-400 capitalize text-sm mt-3 md:w-[90%]">
                 {" "}
                 {info.detail.biography}
               </h1>
@@ -191,17 +193,17 @@ const PersonDetail = () => {
           )}
 
           {info.combinedCredits.cast && (
-            <div className="pr-[5%]">
+            <div className="md:pr-[5%]">
               <HorizontalCards data={info.combinedCredits.cast} />
             </div>
           )}
 
 
 
-<hr className="border-zinc-500 my-[2%] mr-[5%] " />
+<hr className="border-zinc-500 my-[2%] md:mr-[5%] " />
 
 
-          <div className="pr-[5%] overflow-hidden">
+          <div className="md:pr-[5%] overflow-hidden">
             <div className="w-full flex justify-between items-center">
               <h1 className="text-xl font-semibold text-zinc-400 capitalize">
                 {" "}
