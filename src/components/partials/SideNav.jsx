@@ -22,7 +22,8 @@ const SideNav = () => {
 
   return (
     <div className='sideNav h-full w-[80%] z-[9] md:w-[20%] md:relative md:left-[0%] bg-zinc-950/[.6] backdrop-blur-lg pt-5 px-8 text-white capitalize border-r border-zinc-600 absolute left-[-100%]'>
-        <i ref={closeRef} class="ri-close-line absolute top-[1%] right-[5%] scale-[1.5]"></i>
+
+        <i ref={closeRef} class="ri-close-line md:hidden absolute top-[1%] right-[5%] scale-[1.5]"></i>
         <div className='flex gap-2 items-center font-semibold' >
             <img className='h-7' src="/svg/logo.svg" alt="" />
             <span className='text-2xl'>Movie App</span>
