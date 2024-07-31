@@ -10,7 +10,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const TrendingPage = () => {
   const navigate = useNavigate();
 
-  
   const [data, setData] = useState(null);
   const [trending, setTrending] = useState([]);
   const [category, setCategory] = useState("all");
@@ -34,7 +33,9 @@ const TrendingPage = () => {
 
   const getTrendingData = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/${duration}?page=${page}`);
+      const { data } = await axios.get(
+        `/trending/${category}/${duration}?page=${page}`
+      );
       if (data.results.length > 0) {
         setTrending((prevState) => [...prevState, ...data.results]);
         setpage(page + 1);
@@ -75,27 +76,31 @@ const TrendingPage = () => {
       <div className="h-full relative w-full bg-zinc-950/[.6] backdrop-blur">
         <div className="w-full flex flex-col md:flex-row  md:items-center gap-2 px-[3%] bg-zinc-950 sticky top-0 z-10">
           <div className="flex gap-2 items-center mt-5 md:mt-0">
-          <div onClick={() => navigate(-1)}>
-            <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
-          </div>
-          <h1 className="md:text-2xl text-xl font-semibold capitalize">Trending</h1>
-          <h1 className="md:text-2xl text-xl font-semibold capitalize">{category}</h1>
+            <div onClick={() => navigate(-1)}>
+              <i className="ri-arrow-left-s-line text-3xl cursor-pointer hover:text-[rgba(133,44,192,1)] duration-[.3s]"></i>
+            </div>
+            <h1 className="md:text-2xl text-xl font-semibold capitalize">
+              Trending
+            </h1>
+            <h1 className="md:text-2xl text-xl font-semibold capitalize">
+              {category}
+            </h1>
           </div>
           <div>
-          <TopNav />
+            <TopNav />
           </div>
           <div className="flex gap-2 mb-5 md:mb-0">
-          <DropDown
-            title="Filter"
-            options={["tv", "movie", "all"]}
-            func={(e) => setCategory(e.target.value.toLowerCase())}
-          />
-          <div className="w-[.5%]"></div>
-          <DropDown
-            title="Duration"
-            options={["week", "day"]}
-            func={(e) => setDuration(e.target.value.toLowerCase())}
-          />
+            <DropDown
+              title="Filter"
+              options={["tv", "movie", "all"]}
+              func={(e) => setCategory(e.target.value.toLowerCase())}
+            />
+            <div className="w-[.5%]"></div>
+            <DropDown
+              title="Duration"
+              options={["week", "day"]}
+              func={(e) => setDuration(e.target.value.toLowerCase())}
+            />
           </div>
         </div>
 

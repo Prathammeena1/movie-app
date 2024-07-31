@@ -42,7 +42,7 @@ console.log(pathname)
 
 
   return (
-    <div className="sticky top-[-1px] z-[99] bg-zinc-950/[.6] backdrop-blur py-5 mx-auto flex px-8 items-center md:w-full justify-center">
+    <div className={`sticky top-[-1px] z-[99] bg-zinc-950/[.6] backdrop-blur py-5 mx-auto flex px-8 items-center md:w-full justify-center`}>
       {pathname == '/' &&
       <i ref={openRef} className="ri-menu-2-line absolute text-xl left-[5%]"></i>
       }
