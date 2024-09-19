@@ -44,7 +44,7 @@ console.log(pathname)
   return (
     <div className={`sticky top-[-1px] z-[99] bg-zinc-950/[.6] backdrop-blur ${pathname == '/' ? "px-8 justify-center  ": " "} md:px-8 md:justify-center py-5 mx-auto flex items-center md:w-full`}>
       {pathname == '/' &&
-      <i ref={openRef} className="ri-menu-2-line absolute text-xl left-[5%]"></i>
+      <i ref={openRef} className="ri-menu-2-line absolute text-xl left-[5%] md:hidden"></i>
       }
       <i className={`ri-search-line text-xl md:ml-0 ${pathname == '/' ? "ml-10  ": "ml-2 "}`}></i>
       <input
